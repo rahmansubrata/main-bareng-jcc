@@ -1,0 +1,40 @@
+/api/v1/login:
+  post:
+    tags:
+      - Auth
+    security: []
+    description: Login
+    parameters:
+      - name: credentials
+        in: body
+        required: true
+        schema:
+          properties:
+            email:
+              type: string
+              example: "1234567890@gmail.com"
+              required: true
+            password:
+              type: string
+              example: "123456789"
+              required: true
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Success
+
+/api/v1/register:
+  post:
+    tags:
+      - Auth
+    requestBody:
+      required: true
+      content:
+        application/json: true
+        schema:
+          properties:
+            $ref: "#/definitions/User"
+    responses:
+      201:
+        description: user telah di buat
